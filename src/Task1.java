@@ -8,14 +8,12 @@ import java.util.stream.IntStream;
 public class Task1 {
 
     public static String NameParne(List<String> name) {
-        AtomicInteger i = new AtomicInteger(1);
-        name = IntStream.range(0, name.size())
+        return IntStream.range(0, name.size())
                 .filter(num -> num % 2 != 0)
-                .mapToObj(name::get)
-                .collect(Collectors.toList());
-        name.forEach(num -> System.out.println(i.getAndIncrement() + "." + num));
-        return name.toString();
+                .mapToObj(i -> i + ". " + name.get(i))
+                .collect(Collectors.joining(", "));
     }
+
 
     public static void main(String[] args) {
         List<String> name = Arrays.asList("Petro", "Andrew", "Teodor", "Anna", "Taras", "Mykola");

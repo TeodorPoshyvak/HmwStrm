@@ -7,16 +7,12 @@ import java.util.stream.IntStream;
 public class Task3 {
 
     public static void sortedNumber(String[] arr) {
-        int[] res = Arrays.stream(arr)
-                .flatMapToInt(num -> Arrays.stream(num.split(", "))
-                        .mapToInt(Integer::parseInt)
-                        .sorted())
-                .toArray();
-        Arrays.stream(res).forEach(num -> {
-            if (num != res[res.length - 1]) {
-                System.out.print(num + ", ");
-            } else System.out.println(num + ".");
-        });
+        System.out.println(Arrays.stream(arr)
+                .flatMap(num -> Arrays.stream(num.split(", ")))
+                .map(Integer::parseInt)
+                .sorted()
+                .map(Object::toString)
+                .collect(Collectors.joining(", ")));
     }
 
 
